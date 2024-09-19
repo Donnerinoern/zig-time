@@ -7,7 +7,7 @@ pub fn build(b: *std.Build) void {
 
     const lib = b.addStaticLibrary(.{
         .name = "zig-time",
-        .root_source_file = .{ .path = "src/time.zig" },
+        .root_source_file = b.path("src/time.zig"),
         .target = target,
         .optimize = optimize,
     });
@@ -15,7 +15,7 @@ pub fn build(b: *std.Build) void {
     b.installArtifact(lib);
 
     const main_tests = b.addTest(.{
-        .root_source_file = .{ .path = "src/time.zig" },
+        .root_source_file = b.path("src/time.zig"),
         .target = target,
         .optimize = optimize,
     });
