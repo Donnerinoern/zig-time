@@ -14,6 +14,8 @@ pub fn build(b: *std.Build) void {
 
     b.installArtifact(lib);
 
+    _ = b.addModule("zig-time", .{ .root_source_file = b.path("src/time.zig"), .target = target, .optimize = optimize });
+
     const main_tests = b.addTest(.{
         .root_source_file = b.path("src/time.zig"),
         .target = target,
